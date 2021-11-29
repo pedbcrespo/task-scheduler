@@ -4,9 +4,6 @@ import br.com.zgsolucoes.task.scheduler.executaveis.ClasseExecutavel
 import groovyx.net.http.HttpBuilder
 
 class InformarHorasTelegram implements ClasseExecutavel {
-    void buscarHorasNoPontoEnviadoParaTelegram() {
-
-    }
 
     @Override
     boolean execute() {

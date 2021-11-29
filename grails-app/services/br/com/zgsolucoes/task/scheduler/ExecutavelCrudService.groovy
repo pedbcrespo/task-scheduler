@@ -4,6 +4,8 @@ import br.com.zgsolucoes.task.scheduler.Executavel
 import grails.gorm.transactions.Transactional
 import groovy.transform.CompileStatic
 
+/**Essa classe fica responsavel por criar um executavel*/
+
 @Transactional
 @CompileStatic
 class ExecutavelCrudService {

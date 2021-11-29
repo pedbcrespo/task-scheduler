@@ -1,7 +1,9 @@
 package br.com.zgsolucoes.task.scheduler
 
 import org.springframework.http.HttpStatus
-
+/**Aqui ficam as operações e validaçoes do programa.
+ * Os detalhes sao ajeitados de forma mais generica, isto é, os detalhes de instanciamento, busca em banco de dados
+ * inserção... ou seja, atividade mais relacionadas ás regras de negocios sao abstraidas para a pasta service*/
 class ExecutavelController {
 
     ExecutavelCrudService executavelCrudService

@@ -4,7 +4,8 @@ import br.com.zgsolucoes.task.scheduler.executaveis.ClasseExecutavel
 import grails.compiler.GrailsCompileStatic
 import grails.gorm.transactions.Transactional
 
-
+/**Classe responsavel por realizar procedimentos de buscas de classes que implementam as acoes das tarefas a partir
+ * de dados da classe Executavel, que seria equivalente ás tarefas*/
 @Transactional
 @GrailsCompileStatic
 class ExecutorExecutavelService {

@@ -6,6 +6,8 @@ import groovy.transform.CompileStatic
 import io.micronaut.context.ApplicationContext
 import io.micronaut.context.Qualifier
 
+
+/**Classe responsabel por procurar a classe que implelemnta a açao da tarefa escolhida*/
 @Transactional
 @CompileStatic
 class ClasseExecutavelFactoyService {
