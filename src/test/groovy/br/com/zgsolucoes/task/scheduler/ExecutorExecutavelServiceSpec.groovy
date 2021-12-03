@@ -5,54 +5,50 @@ import grails.testing.gorm.DomainUnitTest
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class ExecutorExecutavelServiceSpec extends
-        Specification implements
-        ServiceUnitTest<ExecutorExecutavelService>,
-        DomainUnitTest<Executavel> {
+class ExecutorExecutavelServiceSpec extends Specification implements ServiceUnitTest<ExecutorExecutavelService>,
+        DomainUnitTest<Executavel>{
 
+        void "Testa executavel com sucesso"(){
+            given:
+            ClasseExecutavelFactoryService mock = Mock(ClasseExecutavelFactoryService)
+            ClasseExecutavel classeExecutavelMock = Mock(ClasseExecutavel)
+            classeExecutavelMock.execute() >> true
+            mock.procurarClasseExecutavel(_) >> classeExecutavelMock
+            service.classeExecutavelFactoryService = mock
 
-    void "Executa executavel com sucesso"(){
-        given:
-        final ClasseExecutavelFactoyService mock = Mock(ClasseExecutavelFactoyService)
-        final ClasseExecutavel classeExecutavelMock = Mock(ClasseExecutavel)
-        classeExecutavelMock.execute() >> true
-        mock.procurarClasseExecutavel(_) >> classeExecutavelMock
+            and:
+            String titulo = 'Informar horas Telegram'
+            Executavel executavel = new Executavel(titulo: titulo, classeExecutavel: 'br.com.zgsolucoes.task.scheduler.executaveis.implementacoes.InformarHorasTelegram')
+            executavel.save()
 
-        service.classeExecutavelFactoyService = mock
+            when:
+            boolean sucesso = service.executar(titulo)
 
-        and:
-        final String titulo = 'Informar horas telegram'
-        final Executavel executavel = new Executavel(titulo: titulo, classeExecutavel: 'InformarHorasTelegram')
-        executavel.save()
+            then:
+            sucesso
 
-        when:
-        boolean sucesso = service.executar(titulo)
+        }
 
-        then:
-        sucesso
-    }
+        void "Testa executavel com falha"(){
+            given:
+            ClasseExecutavelFactoryService mock = Mock(ClasseExecutavelFactoryService)
+            ClasseExecutavel classeExecutavelMock = Mock(ClasseExecutavel)
+            classeExecutavelMock.execute() >> false
+            mock.procurarClasseExecutavel(_) >> classeExecutavelMock
+            service.classeExecutavelFactoryService = mock
 
-    void "Executar executavel sem sucesso"(){
-        given:
-        final ClasseExecutavelFactoyService mock = Mock(ClasseExecutavelFactoyService)
-        final ClasseExecutavel classeExecutavelMock = Mock(ClasseExecutavel)
-        classeExecutavelMock.execute() >> false
-        mock.procurarClasseExecutavel(_) >> classeExecutavelMock
+            and:
+            String titulo = 'Informar horas Telegram'
+            Executavel executavel = new Executavel(titulo: titulo, classeExecutavel: 'br.com.zgsolucoes.task.scheduler.executaveis.implementacoes.InformarHorasTelegram')
+            executavel.save()
 
-        service.classeExecutavelFactoyService = mock
+            when:
+            boolean sucesso = service.executar(titulo)
 
-        and:
-        final String titulo = 'Informar horas telegram'
-        final Executavel executavel = new Executavel(titulo: titulo, classeExecutavel: 'InformarHorasTelegram')
-        executavel.save()
+            then:
+            !sucesso
 
-        when:
-        boolean sucesso = service.executar(titulo)
+        }
 
-        then:
-        !sucesso
-    }
-
-    def cleanup(){
-    }
+        def cleanup(){}
 }
