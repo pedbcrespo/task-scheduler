@@ -10,6 +10,6 @@ import javax.inject.Singleton
 @CompileStatic
 class CriadorEventos {
     Evento criarEvento(String descricao, StatusEvento statusEvento){
-        new Evento(descricao: descricao, status: statusEvento)
+        return new Evento(descricao: descricao, status: statusEvento)
     }
 }

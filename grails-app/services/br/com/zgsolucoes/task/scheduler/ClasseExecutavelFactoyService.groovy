@@ -14,7 +14,7 @@ class ClasseExecutavelFactoyService {
 
     ApplicationContext applicationContext
 
-    def ClasseExecutavel procurarClasseExecutavel(final Executavel executavel){
+    ClasseExecutavel procurarClasseExecutavel(final Executavel executavel){
         final Class clss = Class.forName("br.com.zgsolucoes.task.scheduler.executaveis.implementacoes.${ executavel.classeExecutavel }")
         //Ficar de olho na linha abaixo
         final ClasseExecutavel classeExecutavel = (ClasseExecutavel) applicationContext.getBean(executavel.classeExecutavel as Class<Object>, clss as Qualifier<Object>)

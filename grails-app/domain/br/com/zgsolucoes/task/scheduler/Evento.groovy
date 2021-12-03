@@ -4,11 +4,11 @@ import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
 class Evento {
-    Execucao execucao
+//    Execucao execucao
     String descricao
     StatusEvento status
 
-//    static belongsTo = [execucao: Execucao]
+    static belongsTo = [execucao: Execucao]
     static constraints = {
     }
 }

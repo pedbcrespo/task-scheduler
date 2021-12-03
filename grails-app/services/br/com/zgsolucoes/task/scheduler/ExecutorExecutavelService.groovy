@@ -9,12 +9,13 @@ import grails.gorm.transactions.Transactional
 class ExecutorExecutavelService {
 
     ClasseExecutavelFactoryService classeExecutavelFactoryService
-//    ExecucaoFactoryService execucaoFactoryService
+    ExecucaoFactoryService execucaoFactoryService
 
-    boolean executar(String titulo){
-        Executavel executavel = Executavel.findByTitulo(titulo)
-//        Execucao execucao = execucaoFactoryService.criarExecucao(executavel)
-        ClasseExecutavel classeExecutavel = classeExecutavelFactoryService.procurarClasseExecutavel(executavel)
-        return classeExecutavel.execute()
+    boolean executar(final String titulo){
+        final Executavel executavel = Executavel.findByTitulo(titulo)//Ta aqui o problema, ele nao encontra o executavel
+        //ps: titulo correto: Enviar ponto para telegram
+        final Execucao execucao = execucaoFactoryService.criarExecucao(executavel)// fonte de possiveis erros
+        final ClasseExecutavel classeExecutavel = classeExecutavelFactoryService.procurarClasseExecutavel(executavel)
+        return classeExecutavel.execute(execucao)
     }
 }

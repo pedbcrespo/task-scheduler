@@ -11,7 +11,7 @@ class InformarHorasTelegramSpec extends Specification{
         obterDadosDoPontoMock.obterDadosPonto() >> "teste"
         InformarHorasTelegram informarHorasTelegram = new InformarHorasTelegram()
         when:
-        boolean result = informarHorasTelegram.execute()
+        boolean result = informarHorasTelegram.execute(null)
 
         then:
         result

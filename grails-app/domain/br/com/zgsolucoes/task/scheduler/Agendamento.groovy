@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @GrailsCompileStatic
 class Agendamento {
 
-//    LocalDateTime horaExecucao
+    LocalDateTime horaExecucao
     Executavel executavel
     List<ParametroAgendamento> parametros
 

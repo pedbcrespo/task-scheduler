@@ -16,10 +16,10 @@ class RegistradorEventoExecucao {
     CriadorEventos criadorEventos
 
     void registrarEvento(Execucao execucao, String descricao, StatusEvento statusEvento, BigDecimal progresso=null) {
-        Evento evento = criadorEventos.criarEvento(descricao, statusEvento)
-
-        if(progresso)
+        final Evento evento = criadorEventos.criarEvento(descricao,statusEvento)
+        if(progresso){
             execucao.progresso = progresso
+        }
 
         execucao.addToEventos(evento)
         evento.save()
