@@ -1,9 +1,10 @@
 package br.com.zgsolucoes.task.scheduler
 
-import grails.gorm.transactions.Transactional
+import grails.gorm.services.Service
 
-@Transactional
+@Service(Executavel)
 interface ExecutavelService {
+
     Executavel get(Serializable id)
 
     List<Executavel> list(Map args)
@@ -13,4 +14,5 @@ interface ExecutavelService {
     void delete(Serializable id)
 
     Executavel save(Executavel executavel)
+
 }

@@ -1,30 +1,30 @@
 package br.com.zgsolucoes.task.scheduler
 
+import grails.converters.JSON
+import grails.validation.ValidationException
 import org.springframework.http.HttpStatus
-/**Aqui ficam as operações e validaçoes do programa.
- * Os detalhes sao ajeitados de forma mais generica, isto é, os detalhes de instanciamento, busca em banco de dados
- * inserção... ou seja, atividade mais relacionadas ás regras de negocios sao abstraidas para a pasta service*/
-class ExecutavelController {
 
-    ExecutavelCrudService executavelCrudService
+import static org.springframework.http.HttpStatus.*
+
+class ExecutavelController {
 
     ExecutorExecutavelService executorExecutavelService
 
-    def criarExecutavel(String titulo, String classeExecutavel) {
-        if (!titulo || !classeExecutavel) {
+    def criaExecutavel(String titulo, String classeExecutave){
+        if(!titulo || !classeExecutavel){
             render (status: HttpStatus.INTERNAL_SERVER_ERROR)
             return
         }
-
-        executavelCrudService.criarExecutavel(titulo, classeExecutavel)
+//        executavelCrudService.criarExecutavel(titulo, classeExecutavel)
     }
 
-    def executar(final String titulo) {
-        if (!titulo || !classeExecutavel) {
+    def executar(String titulo){
+        if(!titulo || !classeExecutavel) {
             render (status: HttpStatus.INTERNAL_SERVER_ERROR)
             return
         }
-
         executorExecutavelService.executar(titulo)
+        render(titulo as JSON)
     }
+
 }
