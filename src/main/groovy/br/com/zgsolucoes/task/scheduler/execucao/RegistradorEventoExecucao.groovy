@@ -4,15 +4,15 @@ import br.com.zgsolucoes.task.scheduler.Evento
 import br.com.zgsolucoes.task.scheduler.Execucao
 import br.com.zgsolucoes.task.scheduler.StatusEvento
 import groovy.transform.CompileStatic
-import org.springframework.beans.factory.annotation.Autowired
+import io.micronaut.context.annotation.Prototype
 
-import javax.inject.Singleton
+import javax.inject.Inject
 
-@Singleton
+@Prototype
 @CompileStatic
 class RegistradorEventoExecucao {
 
-    @Autowired
+    @Inject
     CriadorEventos criadorEventos
 
     void registrarEvento(Execucao execucao, String descricao, StatusEvento statusEvento, BigDecimal progresso=null) {

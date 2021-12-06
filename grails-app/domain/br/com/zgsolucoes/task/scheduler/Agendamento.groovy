@@ -9,7 +9,9 @@ class Agendamento {
 
     LocalDateTime horaExecucao
     Executavel executavel
-    List<ParametroAgendamento> parametros
+//    List<ParametroAgendamento> parametros
+
+    static hasMany = [parametros: ParametroAgendamento]
 
     static constraints = {
     }

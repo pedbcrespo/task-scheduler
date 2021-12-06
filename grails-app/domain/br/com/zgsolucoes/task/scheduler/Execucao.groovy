@@ -7,16 +7,15 @@ import java.time.LocalDateTime
 @GrailsCompileStatic
 class Execucao {
 
-//    Executavel executavel
-    List<ParametroExecucao> parametros
-//    List<Evento> eventos
+//    List<ParametroExecucao> parametros
     BigDecimal progresso
     StatusExecucao status
     LocalDateTime data
 
-    static hasMany = [eventos: Evento]
+    static hasMany = [eventos: Evento, paramentros: ParametroExecucao]
     static belongsTo = [executavel: Executavel]
 
     static constraints = {
+        eventos nullable: true
     }
 }

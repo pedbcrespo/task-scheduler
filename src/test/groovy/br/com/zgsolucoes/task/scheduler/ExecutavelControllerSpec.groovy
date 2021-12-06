@@ -5,7 +5,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
 
-class ExecutavelControllerSpec extends Specification implements ControllerUnitTest<ExecutavelController>, DomainUnitTest<Executavel> {
+class ExecutavelControllerSpec extends Specification implements ControllerUnitTest<ExecutavelController_>, DomainUnitTest<Executavel> {
 
     def populateValidParams(params) {
         assert params != null

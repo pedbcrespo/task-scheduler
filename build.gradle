@@ -11,7 +11,7 @@ buildscript {
 }
 
 version "0.1"
-group "projeto_estagio"
+//group "projeto_estagio"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
